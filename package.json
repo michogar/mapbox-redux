@@ -1,14 +1,14 @@
 {
-  "name": "i-hate-modern-js",
+  "name": "mapboxgl-redux",
   "version": "1.0.0",
-  "description": "A boilerplate with all the f***ing new JS tools",
+  "description": "Testing Mapbox with Redux",
   "main": "./src/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/michogar/i-hate-modern-js.git"
+    "url": "git+https://github.com/michogar/mapboxgl-redux.git"
   },
   "bugs": {
-    "url": "https://github.com/michogar/i-hate-modern-js.git/issues"
+    "url": "https://github.com/michogar/mapboxgl-redux.git/issues"
   },
   "scripts": {
     "dev": "webpack --mode=development",
@@ -16,7 +16,7 @@
     "start": "webpack-dev-server --open --mode=development",
     "test": "jest"
   },
-  "author": "Micho Garcia <michogar@gmail.com>",
+  "author": "Micho Garcia <micho.garcia@geomati.co>",
   "license": "GPL-3.0",
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -41,6 +41,8 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
-    "mapbox-gl": "^0.45.0"
+    "@mapbox/mapbox-gl-redux": "^0.1.0",
+    "mapbox-gl": "^0.45.0",
+    "redux": "^4.0.0"
   }
 }
