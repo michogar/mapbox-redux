@@ -88,3 +88,65 @@ zoomIn () {
   this.store.dispatch(this.actions.zoomIn())
 }
 ```
+
+### Syncing controls with the map's state
+
+To connect controls to the map we'll need connect the control to the store. As we aren't using React or something similar,
+to get the store into the control this will be passed as parameter of the control's constructor.
+
+```
+class Compass {
+  constructor (parent, control, store) {
+    this.store = store
+    const { bearing } = this.store.getState()
+
+    ...
+```
+
+According to the Redux pattern, we need a callback to subscribe to the store who will be called by the reducer:
+
+```
+    ...
+
+    this.unsubscriber = store.subscribe(this.onChangeDirection.bind(this))
+    this.render()
+  }
+  onChangeDirection () {
+    const { bearing } = this.store.getState()
+    this.bearing = bearing
+    this.render()
+  }
+```
+
+### Initializing map's state
+
+In the `reducer` we can initialize the map's state
+
+```
+const initialState = {
+  bearing: 0
+}
+
+const reducer = (state = initialState, action) => {
+  const map = action.map
+```
+
+and to sync the map's states after its load we'll use the `MapActionCreators.sync()` action:
+
+```
+map.on('load', () => {
+  const reduxControl = new MapboxGLRedux.ReduxMapControl('map')
+  map.addControl(reduxControl)
+  store.dispatch(reduxControl.MapActionCreators.sync())
+
+  ...
+```
+
+with its correspondent reducer
+
+```
+case MapActionTypes.sync:
+  return Object.assign({}, state, {
+    bearing: map.getBearing()
+  })
+```
