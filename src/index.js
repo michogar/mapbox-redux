@@ -12,14 +12,17 @@ const map = new Mapboxgl.Map({
   hash: true
 })
 
-const reduxControl = new MapboxGLRedux.ReduxMapControl('map')
-
-map.addControl(reduxControl)
 map.addControl(new Mapboxgl.NavigationControl())
 
-/* eslint-disable no-unused-vars */
+map.on('load', () => {
+  const reduxControl = new MapboxGLRedux.ReduxMapControl('map')
+  map.addControl(reduxControl)
+  store.dispatch(reduxControl.MapActionCreators.sync())
 
-const zoom = new Zoom('panel', reduxControl, store)
-const compass = new Compass('panel', reduxControl, store)
+  /* eslint-disable no-unused-vars */
 
-/* eslint-enable no-unused-vars */
+  const zoom = new Zoom('panel', reduxControl, store)
+  const compass = new Compass('panel', reduxControl, store)
+
+  /* eslint-enable no-unused-vars */
+})

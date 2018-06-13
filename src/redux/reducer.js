@@ -11,6 +11,10 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         zoom: map.getZoom()
       })
+    case MapActionTypes.sync:
+      return Object.assign({}, state, {
+        bearing: map.getBearing()
+      })
     case MapActionTypes.rotate:
       return Object.assign({}, state, {
         bearing: map.getBearing()
