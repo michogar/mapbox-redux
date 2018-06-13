@@ -1,6 +1,6 @@
-# MapboGL with Redux
+# MapboxGL with Redux
 
-A basic sample to how to use Mapbox with Redux.
+A basic sample of how to use Mapbox with Redux.
 
 ```
 $ git clone git@github.com:michogar/mapbox-redux.git
@@ -30,7 +30,7 @@ This control gets events from map and dispatches Redux actions
 
 ### Add mapMiddleware to the store
 
-First, we must create our reducers to create our store
+First, we must create our reducers to create the store
 
 ```
 import { MapActionTypes } from '@mapbox/mapbox-gl-redux'
@@ -70,4 +70,21 @@ export default store
 ```
 
 With the `applyMiddleware` function from Redux we apply our `MapboxGLRedux.mapMiddleware` to our store. Now we are able
-to launch `mapActions` and our store we'll be modified with them.
+to launch `mapActions` and our map state we'll be modified with them.
+
+Every action must be linked to the map. The `ReduxMapControl` has a `MapActionCreators` attribute that returns the whole
+actions but already linked. So, we must instantiate the control with the `mapId` before get the actions through
+the `MapActionCreators`.
+
+```
+constructor (parent, control, store) {
+    this.store = store
+    this.actions = control.MapActionCreators
+
+    ...
+
+
+zoomIn () {
+  this.store.dispatch(this.actions.zoomIn())
+}
+```

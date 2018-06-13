@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <meta charset="UTF-8">
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
+    <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
     <title>mapbox - Redux</title>
     <style>
         html, body {
@@ -12,9 +14,15 @@
         #map {
             height: 100%;
         }
+        .contain {
+            height: 100%;
+        }
     </style>
 </head>
 <body>
+<div class='col12 contain fill-navy dark'>
+    <div class='col4 pad2 fill-darken1' id="panel"></div>
     <div id="map"></div>
+</div>
 </body>
 </html>
