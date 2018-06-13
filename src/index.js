@@ -12,8 +12,6 @@ const map = new Mapboxgl.Map({
   hash: true
 })
 
-map.addControl(new Mapboxgl.NavigationControl())
-
 map.on('load', () => {
   const reduxControl = new MapboxGLRedux.ReduxMapControl('map')
   map.addControl(reduxControl)
