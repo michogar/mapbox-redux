@@ -3,12 +3,13 @@ import * as MapboxGLRedux from '@mapbox/mapbox-gl-redux'
 import store from './redux/store'
 import { Zoom, Compass, About } from './components'
 
+Mapboxgl.accessToken = 'pk.eyJ1IjoibWljaG9nYXIiLCJhIjoiY2plZm05czBiMGczaDJ3bnNsM216Nm13aCJ9.AeyXFg8ZIWI8as-453cSzg'
 const map = new Mapboxgl.Map({
   container: 'map',
-  style: 'https://api.tmb.cat/v1/maps/vts/styles/positron/style.json?app_id=b53a5765&app_key=cb2fc6155198c620d9d6f454d4a6ef69',
-  center: [2.15, 41.39],
+  style: 'mapbox://styles/mapbox/streets-v9',
+  center: [-8.715893, 42.25206],
   zoom: 12,
-  bearing: -45,
+  bearing: 0,
   hash: true
 })
 
