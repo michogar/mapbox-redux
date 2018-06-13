@@ -7,7 +7,7 @@ class Zoom {
   }
   render () {
     const pill = document.createElement('div')
-    pill.className = 'pill'
+    pill.className = 'pill col6'
     const zoomOut = document.createElement('a')
     zoomOut.className = 'button icon minus'
     zoomOut.addEventListener('click', this.zoomOut.bind(this))

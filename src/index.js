@@ -1,7 +1,7 @@
 import Mapboxgl from 'mapbox-gl'
 import * as MapboxGLRedux from '@mapbox/mapbox-gl-redux'
 import store from './redux/store'
-import Zoom from './components/zoom'
+import { Zoom, Compass } from './components'
 
 const map = new Mapboxgl.Map({
   container: 'map',
@@ -17,6 +17,9 @@ const reduxControl = new MapboxGLRedux.ReduxMapControl('map')
 map.addControl(reduxControl)
 map.addControl(new Mapboxgl.NavigationControl())
 
-const zoom = new Zoom('panel', reduxControl, store)
+/* eslint-disable no-unused-vars */
 
-console.log(zoom)
+const zoom = new Zoom('panel', reduxControl, store)
+const compass = new Compass('panel', reduxControl, store)
+
+/* eslint-enable no-unused-vars */
