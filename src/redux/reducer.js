@@ -1,7 +1,7 @@
 import { MapActionTypes } from '@mapbox/mapbox-gl-redux'
 
 const initialState = {
-  bearing: 45
+  bearing: 0
 }
 
 const reducer = (state = initialState, action) => {
