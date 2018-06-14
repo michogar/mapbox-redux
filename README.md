@@ -13,7 +13,7 @@ $ npm run start
 
 This sample use the [mapbox-gl-redux](https://github.com/mapbox/mapbox-gl-redux) library. More doc there.
 
-With the mapbox-gl-redux library we'll get maintain synced the map's state with the application state. to do this, first:
+With the mapbox-gl-redux library we'll get maintain synced the map's state with the application's state. To do this, first:
 
 ### Create a ReduxMapControl and add it to the map
 
@@ -50,7 +50,7 @@ const reducer = (state, action) => {
 export default reducer
 ```
 
-Using `MapActionTypes` we can identify the actions from our store launched by the map
+Using `MapActionTypes` we can identify the actions launched by the map from our reducers
 
 Then, we are able to create the application's store
 
