@@ -29,7 +29,8 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader']
       }
-    ]
+    ],
+    noParse: /(mapbox-gl)\.js$/
   },
   resolve: {
     extensions: ['*', '.js', '.jsx']
