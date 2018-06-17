@@ -1,5 +1,7 @@
 # MapboxGL with Redux
 
+See the demo: [http://michogarcia.org/mapbox-redux](http://michogarcia.org/mapbox-redux)
+
 A basic example showing how to use Mapbox with Redux.
 
 ```
