@@ -1,6 +1,6 @@
 # MapboxGL with Redux
 
-A basic sample of how to use Mapbox with Redux.
+A basic example showing how to use Mapbox with Redux.
 
 ```
 $ git clone git@github.com:michogar/mapbox-redux.git
@@ -11,9 +11,9 @@ $ npm run start
 
 ## How to
 
-This sample use the [mapbox-gl-redux](https://github.com/mapbox/mapbox-gl-redux) library. More doc there.
+This sample uses the [mapbox-gl-redux](https://github.com/mapbox/mapbox-gl-redux) library. More docs there.
 
-With the mapbox-gl-redux library we'll get maintain synced the map's state with the application's state. To do this, first:
+With the mapbox-gl-redux library we can sync the map's state with the app state and maintain it. To do this, first:
 
 ### Create a ReduxMapControl and add it to the map
 
@@ -26,7 +26,7 @@ const map = new Mapboxgl.Map({
 map.addControl(new MapboxGLRedux.ReduxMapControl('map'))
 ```
 
-This control gets events from map and dispatches Redux actions
+This control gets events from the map and dispatches Redux actions
 
 ### Add mapMiddleware to the store
 
@@ -70,10 +70,10 @@ export default store
 ```
 
 With the `applyMiddleware` function from Redux we apply our `MapboxGLRedux.mapMiddleware` to our store. Now we are able
-to launch `mapActions` and our map state we'll be modified with them.
+to launch `mapActions` and our map state will be modified with them.
 
 Every action must be linked to the map. The `ReduxMapControl` has a `MapActionCreators` attribute that returns the whole
-actions but already linked. So, we must instantiate the control with the `mapId` before get the actions through
+actions, but already synced. So, we must instantiate the control with the `mapId` before we get the actions through
 the `MapActionCreators`.
 
 ```
@@ -91,8 +91,7 @@ zoomIn () {
 
 ### Syncing controls with the map's state
 
-To connect controls to the map we'll need connect the control to the store. As we aren't using React or something similar,
-to get the store into the control this will be passed as parameter of the control's constructor.
+To connect controls to the map will need to connect the control to the store. As we aren't using React, or something similar, to get the store into the control this will be passed as a parameter of the control's constructor.
 
 ```
 class Compass {
@@ -103,7 +102,7 @@ class Compass {
     ...
 ```
 
-According to the Redux pattern, we need a callback to subscribe to the store who will be called by the reducer:
+According to the Redux pattern, we need a callback to subscribe to the store which will be called by the reducer:
 
 ```
     ...
@@ -131,7 +130,7 @@ const reducer = (state = initialState, action) => {
   const map = action.map
 ```
 
-and to sync the map's states after its load we'll use the `MapActionCreators.sync()` action:
+and to sync the map's states after its loaded we'll use the `MapActionCreators.sync()` action:
 
 ```
 map.on('load', () => {
